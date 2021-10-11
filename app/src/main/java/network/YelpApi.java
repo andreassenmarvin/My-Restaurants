@@ -1,4 +1,4 @@
-package com.example.myrestaurants;
+package network;
 
 import models.YelpBusinessesSearchResponse;
 import retrofit2.Call;

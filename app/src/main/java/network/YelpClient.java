@@ -1,4 +1,4 @@
-package com.example.myrestaurants;
+package network;
 
 import static com.example.myrestaurants.Constants.YELP_API_KEY;
 import static com.example.myrestaurants.Constants.YELP_BASE_URL;

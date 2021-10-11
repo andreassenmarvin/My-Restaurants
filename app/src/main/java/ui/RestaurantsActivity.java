@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.example.myrestaurants.MyRestaurantsArrayAdapter;
 import com.example.myrestaurants.R;
-import com.example.myrestaurants.YelpApi;
-import com.example.myrestaurants.YelpClient;
+import network.YelpApi;
+import network.YelpClient;
 
 import java.util.List;
 
