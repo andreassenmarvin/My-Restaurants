@@ -22,13 +22,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RestaurantsActivity extends AppCompatActivity {
+    private static final String TAG = RestaurantsActivity.class.getSimpleName();
+
     @BindView(R.id.locationTextView) TextView mLocationTextView;
     @BindView(R.id.listView) ListView mListView;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
 
-
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
@@ -38,13 +39,14 @@ public class RestaurantsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String restaurant = ((TextView)view).getText().toString();
-                Toast.makeText(RestaurantsActivity.this, restaurant, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RestaurantsActivity.this, restaurant, Toast.LENGTH_LONG).show();
             }
         });
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
-        mLocationTextView.setText("Here are all the restaurants near: " + location);
+        mLocationTextView.setText("Here are all the restaurants near " + location);
+
         YelpApi client = YelpClient.getClient();
 
         Call<YelpBusinessesSearchResponse> call = client.getRestaurants(location, "restaurants");
@@ -52,7 +54,6 @@ public class RestaurantsActivity extends AppCompatActivity {
         call.enqueue(new Callback<YelpBusinessesSearchResponse>() {
             @Override
             public void onResponse(Call<YelpBusinessesSearchResponse> call, Response<YelpBusinessesSearchResponse> response) {
-
                 hideProgressBar();
 
                 if (response.isSuccessful()) {
@@ -64,7 +65,7 @@ public class RestaurantsActivity extends AppCompatActivity {
                         restaurants[i] = restaurantsList.get(i).getName();
                     }
 
-                    for (int i = 0; i < categories.length; i++){
+                    for (int i = 0; i < categories.length; i++) {
                         Category category = restaurantsList.get(i).getCategories().get(0);
                         categories[i] = category.getTitle();
                     }
@@ -73,23 +74,26 @@ public class RestaurantsActivity extends AppCompatActivity {
                     mListView.setAdapter(adapter);
 
                     showRestaurants();
-                }
-
-                else {
-                    showFailureMessage();
+                } else {
+                    showUnsuccessfulMessage();
                 }
             }
 
             @Override
             public void onFailure(Call<YelpBusinessesSearchResponse> call, Throwable t) {
-                Log.e("Error Message" ,"onFailure: ", t);
                 hideProgressBar();
                 showFailureMessage();
             }
+
         });
     }
 
     private void showFailureMessage() {
+        mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showUnsuccessfulMessage() {
         mErrorTextView.setText("Something went wrong. Please try again later");
         mErrorTextView.setVisibility(View.VISIBLE);
     }
@@ -102,5 +106,4 @@ public class RestaurantsActivity extends AppCompatActivity {
     private void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
     }
-
 }

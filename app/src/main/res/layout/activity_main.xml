@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/ic_launcher_background"
+    android:background="@drawable/Restaurant"
     tools:context="MainActivity">
 
     <TextView
@@ -19,16 +19,26 @@
         android:textSize="40sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appNameTextView"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:text="Search for all restaurants abroad and the cuisines they offer."
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:layout_marginTop="100dp"/>
+
     <EditText
         android:id="@+id/locationEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/findRestaurantsButton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="17dp"
+        android:layout_centerVertical="true"
         android:background="@color/design_default_color_background"
-        android:hint="Enter zip code"
-        android:padding="5dp" />
+        android:hint="Enter location..."
+        android:padding="10dp" />
 
     <Button
         android:id="@+id/findRestaurantsButton"
