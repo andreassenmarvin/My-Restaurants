@@ -1,4 +1,4 @@
-package com.example.myrestaurants;
+package models;
 
 import java.util.List;
 import javax.annotation.Generated;

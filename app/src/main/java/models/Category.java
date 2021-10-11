@@ -1,4 +1,4 @@
-package com.example.myrestaurants;
+package models;
 
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
