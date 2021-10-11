@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/restaurant"
+    android:elevation="0dp"
     tools:context="MainActivity">
 
     <TextView
@@ -28,7 +29,8 @@
         android:text="Search for all restaurants abroad and the cuisines they offer."
         android:textColor="@color/white"
         android:textSize="25dp"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp"
+        android:elevation="10dp"/>
 
     <EditText
         android:id="@+id/locationEditText"
