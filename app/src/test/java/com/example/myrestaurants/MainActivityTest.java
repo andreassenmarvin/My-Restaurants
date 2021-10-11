@@ -12,6 +12,9 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.shadows.ShadowActivity;
 
+import ui.MainActivity;
+import ui.RestaurantsActivity;
+
 @RunWith(RobolectricTestRunner.class)
 
 public class MainActivityTest {

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/restaurant"
     android:elevation="0dp"
-    tools:context="MainActivity">
+    tools:context="ui.MainActivity">
 
     <TextView
         android:id="@+id/appNameTextView"

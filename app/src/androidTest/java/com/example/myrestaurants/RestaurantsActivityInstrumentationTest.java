@@ -22,6 +22,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import ui.RestaurantsActivity;
+
 @RunWith(AndroidJUnit4.class)
 public class RestaurantsActivityInstrumentationTest {
     @Rule
