@@ -39,7 +39,6 @@ public class RestaurantsActivity extends AppCompatActivity {
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
 
-
     private RestaurantListAdapter mAdapter;
 
     public List<Business> restaurants;
@@ -49,7 +48,6 @@ public class RestaurantsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
         ButterKnife.bind(this);
-
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");
@@ -64,14 +62,12 @@ public class RestaurantsActivity extends AppCompatActivity {
                 hideProgressBar();
 
                 if (response.isSuccessful()) {
-                    List<Business> restaurantsList = response.body().getBusinesses();
+                    restaurants = response.body().getBusinesses();
                     mAdapter = new RestaurantListAdapter(RestaurantsActivity.this, restaurants);
                     mRecyclerView.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RestaurantsActivity.this);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
-                    String[] restaurants = new String[restaurantsList.size()];
-                    String[] categories = new String[restaurantsList.size()];
 
                     showRestaurants();
                 } else {

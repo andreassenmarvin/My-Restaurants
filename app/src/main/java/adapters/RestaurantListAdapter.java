@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import models.Business;
 
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder> {
-    private List<Business>mRestaurants;
+    private List<Business> mRestaurants;
     private Context mContext;
 
     public RestaurantListAdapter(Context context, List<Business> restaurants) {
@@ -48,7 +48,6 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         @BindView(R.id.restaurantNameTextView) TextView mNameTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
         @BindView(R.id.ratingTextView) TextView mRatingTextView;
-
         private Context mContext;
 
         public RestaurantViewHolder(View itemView) {
