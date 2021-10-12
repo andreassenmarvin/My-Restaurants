@@ -58,4 +58,7 @@ dependencies {
 
     //Robolectric dependencies
     testImplementation 'org.robolectric:robolectric:4.4'
+
+    //RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 }
