@@ -2,8 +2,8 @@
 #### This is an app that allows the user to search for restaurants abroad and also displays the best cuisines offered.
 
 ## Demo
-![App image](app/src/Assets/README/scr1.png)
-![App image](app/src/Assets/README/scr2.png)
+![App image](app/src/Assets/README/s1.png)
+![App image](app/src/Assets/README/s2.png)
 
 ## Setup/Installation Requirements
 * Fork/Clone the repository
