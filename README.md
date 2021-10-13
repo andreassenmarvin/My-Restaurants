@@ -4,6 +4,7 @@
 ## Demo
 ![App image](app/src/Assets/README/s1.png)
 ![App image](app/src/Assets/README/s2.png)
+![App image](app/src/Assets/README/s3.png)
 
 ## Setup/Installation Requirements
 * Fork/Clone the repository
