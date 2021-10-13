@@ -13,7 +13,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.shadows.ShadowActivity;
 
 import ui.MainActivity;
-import ui.RestaurantsActivity;
+import ui.RestaurantsListActivity;
 
 @RunWith(RobolectricTestRunner.class)
 
@@ -37,7 +37,7 @@ public class MainActivityTest {
     @Test
     public void secondActivityStarted(){
         activity.findViewById(R.id.findRestaurantsButton).performClick();
-        Intent expectedIntent = new Intent(activity, RestaurantsActivity.class);
+        Intent expectedIntent = new Intent(activity, RestaurantsListActivity.class);
         ShadowActivity shadowActivity = org.robolectric.Shadows.shadowOf(activity);
         Intent actualIntent = shadowActivity.getNextStartedActivity();
         assertTrue(actualIntent.filterEquals(expectedIntent));

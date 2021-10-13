@@ -22,21 +22,21 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import ui.RestaurantsActivity;
+import ui.RestaurantsListActivity;
 
 @RunWith(AndroidJUnit4.class)
-public class RestaurantsActivityInstrumentationTest {
+public class RestaurantsListActivityInstrumentationTest {
     @Rule
-    public ActivityScenarioRule<RestaurantsActivity> activityTestRule =
-            new ActivityScenarioRule<>(RestaurantsActivity.class);
+    public ActivityScenarioRule<RestaurantsListActivity> activityTestRule =
+            new ActivityScenarioRule<>(RestaurantsListActivity.class);
 
     private View activityDecorView;
 
     @Before
     public void setUp() {
-        activityTestRule.getScenario().onActivity(new ActivityScenario.ActivityAction<RestaurantsActivity>() {
+        activityTestRule.getScenario().onActivity(new ActivityScenario.ActivityAction<RestaurantsListActivity>() {
             @Override
-            public void perform(RestaurantsActivity activity) {
+            public void perform(RestaurantsListActivity activity) {
                 activityDecorView = activity.getWindow().getDecorView();
             }
         });
@@ -46,7 +46,7 @@ public class RestaurantsActivityInstrumentationTest {
     public void listItemClickDisplaysToastWithCorrectRestaurant() {
         String restaurantName = "Mi Mero Mole";
         onData(anything())
-                .inAdapterView(withId(R.id.listView))
+                .inAdapterView(withId(R.id.recyclerView))
                 .atPosition(0)
                 .perform(click());
         onView(withText(restaurantName)).inRoot(withDecorView(not(activityDecorView)))
