@@ -25,28 +25,22 @@ import models.Business;
 import models.Category;
 
 public class RestaurantDetailFragment extends Fragment {
-    @BindView(R.id.restaurantImageView)
-    ImageView mImageLabel;
-    @BindView(R.id.restaurantNameTextView)
-    TextView mNameLabel;
-    @BindView(R.id.cuisineTextView)
-    TextView mCategoriesLabel;
-    @BindView(R.id.ratingTextView)
-    TextView mRatingLabel;
-    @BindView(R.id.websiteTextView)
-    TextView mWebsiteLabel;
-    @BindView(R.id.phoneTextView)
-    TextView mPhoneLabel;
-    @BindView(R.id.addressTextView)
-    TextView mAddressLabel;
-    @BindView(R.id.saveRestaurantButton)
-    TextView mSaveRestaurantButton;
+    @BindView(R.id.restaurantImageView) ImageView mImageLabel;
+    @BindView(R.id.restaurantNameTextView) TextView mNameLabel;
+    @BindView(R.id.cuisineTextView) TextView mCategoriesLabel;
+    @BindView(R.id.ratingTextView) TextView mRatingLabel;
+    @BindView(R.id.websiteTextView) TextView mWebsiteLabel;
+    @BindView(R.id.phoneTextView) TextView mPhoneLabel;
+    @BindView(R.id.addressTextView) TextView mAddressLabel;
+    @BindView(R.id.saveRestaurantButton) TextView mSaveRestaurantButton;
+
 
     private Business mRestaurant;
 
     public RestaurantDetailFragment() {
         // Required empty public constructor
     }
+
 
     public static RestaurantDetailFragment newInstance(Business restaurant) {
         RestaurantDetailFragment restaurantDetailFragment = new RestaurantDetailFragment();
@@ -68,13 +62,13 @@ public class RestaurantDetailFragment extends Fragment {
 
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_restaurant_detail, container, false);
+        View view =  inflater.inflate(R.layout.fragment_restaurant_detail, container, false);
         ButterKnife.bind(this, view);
         Picasso.get().load(mRestaurant.getImageUrl()).into(mImageLabel);
 
         List<String> categories = new ArrayList<>();
 
-        for (Category category : mRestaurant.getCategories()) {
+        for (Category category: mRestaurant.getCategories()) {
             categories.add(category.getTitle());
         }
 

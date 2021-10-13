@@ -33,7 +33,7 @@ public class Business {
     private List<Category> categories = null;
     @SerializedName("review_count")
     @Expose
-    private Double reviewCount;
+    private Integer reviewCount;
     @SerializedName("name")
     @Expose
     private String name;
@@ -58,30 +58,30 @@ public class Business {
 
     /**
      * No args constructor for use in serialization
-     * 
+     *
      */
     public Business() {
     }
 
     /**
-     * 
-     * @param distance
-     * @param rating
-     * @param coordinates
+     *
      * @param transactions
-     * @param url
-     * @param isClosed
      * @param phone
-     * @param reviewCount
-     * @param price
-     * @param imageUrl
-     * @param name
-     * @param alias
      * @param location
+     * @param alias
+     * @param imageUrl
+     * @param url
      * @param id
+     * @param distance
+     * @param price
+     * @param reviewCount
+     * @param name
      * @param categories
+     * @param rating
+     * @param isClosed
+     * @param coordinates
      */
-    public Business(Double rating, String price, String phone, String id, String alias, Boolean isClosed, List<Category> categories, Double reviewCount, String name, String url, Coordinates coordinates, String imageUrl, Location location, Double distance, List<String> transactions) {
+    public Business(Double rating, String price, String phone, String id, String alias, Boolean isClosed, List<Category> categories, Integer reviewCount, String name, String url, Coordinates coordinates, String imageUrl, Location location, Double distance, List<String> transactions) {
         super();
         this.rating = rating;
         this.price = price;
@@ -156,11 +156,11 @@ public class Business {
         this.categories = categories;
     }
 
-    public Double getReviewCount() {
+    public Integer getReviewCount() {
         return reviewCount;
     }
 
-    public void setReviewCount(Double reviewCount) {
+    public void setReviewCount(Integer reviewCount) {
         this.reviewCount = reviewCount;
     }
 
@@ -219,5 +219,4 @@ public class Business {
     public void setTransactions(List<String> transactions) {
         this.transactions = transactions;
     }
-
 }
