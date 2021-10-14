@@ -1,5 +1,7 @@
 package ui;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -24,7 +26,7 @@ import butterknife.ButterKnife;
 import models.Business;
 import models.Category;
 
-public class RestaurantDetailFragment extends Fragment {
+public class RestaurantDetailFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.restaurantImageView) ImageView mImageLabel;
     @BindView(R.id.restaurantNameTextView) TextView mNameLabel;
     @BindView(R.id.cuisineTextView) TextView mCategoriesLabel;
@@ -70,6 +72,12 @@ public class RestaurantDetailFragment extends Fragment {
 
         for (Category category: mRestaurant.getCategories()) {
             categories.add(category.getTitle());
+
+            mWebsiteLabel.setOnClickListener(this);
+            mPhoneLabel.setOnClickListener(this);
+            mAddressLabel.setOnClickListener(this);
+
+            return view;
         }
 
         mNameLabel.setText(mRestaurant.getName());
@@ -79,5 +87,26 @@ public class RestaurantDetailFragment extends Fragment {
         mAddressLabel.setText(mRestaurant.getLocation().toString());
 
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == mWebsiteLabel) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mRestaurant.getUrl()));
+            startActivity(webIntent);
+        }
+        if (view == mPhoneLabel) {
+            Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
+                    Uri.parse("tel:" + mRestaurant.getPhone()));
+            startActivity(phoneIntent);
+        }
+        if (view == mAddressLabel) {
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("geo:" + mRestaurant.getCoordinates().getLatitude()
+                            + "," + mRestaurant.getCoordinates().getLongitude()
+                            + "?q=(" + mRestaurant.getName() + ")"));
+            startActivity(mapIntent);
+        }
     }
 }
