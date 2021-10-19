@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot locationSnapshot : dataSnapshot.getChildren()) {
                     String location = locationSnapshot.getValue().toString();
-                    Log.d("Locations updated", "location" + location);
+                    Log.d("Locations updated", "Location: " + location);
                 }
             }
 

@@ -12,8 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.myrestaurants.Constants;
 import com.example.myrestaurants.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -38,6 +42,7 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
 
 
     private Business mRestaurant;
+    private DatabaseReference mRestaurantRef;
 
     public RestaurantDetailFragment() {
         // Required empty public constructor
@@ -61,12 +66,11 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        // Inflate the layout for this fragment
-
         View view =  inflater.inflate(R.layout.fragment_restaurant_detail, container, false);
         ButterKnife.bind(this, view);
-        Picasso.get().load(mRestaurant.getImageUrl()).into(mImageLabel);
+        Picasso.get()
+                .load(mRestaurant.getImageUrl())
+                .into(mImageLabel);
 
         List<String> categories = new ArrayList<>();
 
@@ -107,6 +111,13 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
                             + "," + mRestaurant.getCoordinates().getLongitude()
                             + "?q=(" + mRestaurant.getName() + ")"));
             startActivity(mapIntent);
+        }
+        if (view == mSaveRestaurantButton) {
+            mRestaurantRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
+            mRestaurantRef.push().setValue(mRestaurant);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 }

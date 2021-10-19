@@ -12,26 +12,12 @@ import org.parceler.Parcel;
 @Parcel
 public class Location {
 
-    @SerializedName("city")
-    @Expose
     private String city;
-    @SerializedName("country")
-    @Expose
     private String country;
-    @SerializedName("address2")
-    @Expose
     private String address2;
-    @SerializedName("address3")
-    @Expose
     private String address3;
-    @SerializedName("state")
-    @Expose
     private String state;
-    @SerializedName("address1")
-    @Expose
     private String address1;
-    @SerializedName("zip_code")
-    @Expose
     private String zipCode;
 
     /**

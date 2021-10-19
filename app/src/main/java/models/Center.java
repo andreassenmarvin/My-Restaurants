@@ -10,11 +10,7 @@ import org.parceler.Parcel;
 @Parcel
 public class Center {
 
-    @SerializedName("latitude")
-    @Expose
     private Double latitude;
-    @SerializedName("longitude")
-    @Expose
     private Double longitude;
 
     /**
