@@ -15,7 +15,7 @@
             android:name="ui.RestaurantDetailActivity">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.example.myrestaurants.ui.MainActivity" >
+            android:value="ui.MainActivity" >
         </meta-data>
         </activity>
             android:exported="true" />
@@ -23,7 +23,7 @@
             android:name="ui.RestaurantsListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.myrestaurants.ui.MainActivity" >
+                android:value="ui.MainActivity" >
             </meta-data>
         </activity>
         <activity
