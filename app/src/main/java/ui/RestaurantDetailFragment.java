@@ -52,12 +52,12 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
     public static RestaurantDetailFragment newInstance(Business restaurant) {
         RestaurantDetailFragment restaurantDetailFragment = new RestaurantDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("restaurant", Parcels.wrap(restaurant));
-        restaurantDetailFragment.setArguments(args);
-        return restaurantDetailFragment;
-    }
+            args.putParcelable("restaurant", Parcels.wrap(restaurant));
+            restaurantDetailFragment.setArguments(args);
+            return restaurantDetailFragment;
+        }
 
-    @Override
+        @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         assert getArguments() != null;

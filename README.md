@@ -6,6 +6,7 @@
 ![App image](app/src/Assets/README/s2.png)
 ![App image](app/src/Assets/README/s3.png)
 ![App image](app/src/Assets/README/s4.png)
+![App image](app/src/Assets/README/s5.png)
 
 ## Setup/Installation Requirements
 * Fork/Clone the repository
