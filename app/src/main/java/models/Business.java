@@ -10,21 +10,50 @@ import org.parceler.Parcel;
 @Parcel
 public class Business {
 
+    @SerializedName("rating")
+    @Expose
     private Double rating;
+    @SerializedName("price")
+    @Expose
     private String price;
+    @SerializedName("phone")
+    @Expose
     private String phone;
+    @SerializedName("id")
+    @Expose
     private String id;
+    @SerializedName("alias")
+    @Expose
     private String alias;
+    @SerializedName("is_closed")
+    @Expose
     private Boolean isClosed;
+    @SerializedName("categories")
+    @Expose
     private List<Category> categories = null;
+    @SerializedName("review_count")
+    @Expose
     private Integer reviewCount;
+    @SerializedName("name")
+    @Expose
     private String name;
+    @SerializedName("url")
+    @Expose
     private String url;
+    @SerializedName("coordinates")
+    @Expose
     private Coordinates coordinates;
+    @SerializedName("image_url")
+    @Expose
     private String imageUrl;
+    @SerializedName("location")
+    @Expose
     private Location location;
+    @SerializedName("distance")
+    @Expose
     private Double distance;
-
+    @SerializedName("transactions")
+    @Expose
     private List<String> transactions = null;
 
     /**

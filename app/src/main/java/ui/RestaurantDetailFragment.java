@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,11 +39,10 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
     @BindView(R.id.websiteTextView) TextView mWebsiteLabel;
     @BindView(R.id.phoneTextView) TextView mPhoneLabel;
     @BindView(R.id.addressTextView) TextView mAddressLabel;
-    @BindView(R.id.saveRestaurantButton) TextView mSaveRestaurantButton;
+    @BindView(R.id.saveRestaurantButton) Button mSaveRestaurantButton;
 
 
     private Business mRestaurant;
-    private DatabaseReference mRestaurantRef;
 
     public RestaurantDetailFragment() {
         // Required empty public constructor
@@ -80,6 +80,7 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
             mWebsiteLabel.setOnClickListener(this);
             mPhoneLabel.setOnClickListener(this);
             mAddressLabel.setOnClickListener(this);
+            mSaveRestaurantButton.setOnClickListener(this);
 
             return view;
         }
@@ -113,11 +114,11 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
             startActivity(mapIntent);
         }
         if (view == mSaveRestaurantButton) {
-            mRestaurantRef = FirebaseDatabase
+           DatabaseReference restaurantRef = FirebaseDatabase
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
-            mRestaurantRef.push().setValue(mRestaurant);
-            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+           restaurantRef.push().setValue(mRestaurant);
+           Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 }

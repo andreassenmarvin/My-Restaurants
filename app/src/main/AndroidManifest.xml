@@ -12,15 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyRestaurants" >
         <activity
-            android:name="ui.RestaurantDetailActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="ui.MainActivity" >
-        </meta-data>
-        </activity>
+            android:name="ui.SavedRestaurantListActivity"
             android:exported="true" />
-        <activity
-            android:name="ui.RestaurantsListActivity" >
+        <activity android:name="ui.RestaurantDetailActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ui.MainActivity" >
+            </meta-data>
+        </activity>
+        <activity android:name="ui.RestaurantsListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ui.MainActivity" >

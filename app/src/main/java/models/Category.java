@@ -9,7 +9,11 @@ import org.parceler.Parcel;
 @Parcel
 public class Category {
 
+    @SerializedName("alias")
+    @Expose
     private String alias;
+    @SerializedName("title")
+    @Expose
     private String title;
 
     /**

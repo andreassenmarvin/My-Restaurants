@@ -10,7 +10,11 @@ import org.parceler.Parcel;
 @Parcel
 public class Coordinates {
 
+    @SerializedName("latitude")
+    @Expose
     private Double latitude;
+    @SerializedName("longitude")
+    @Expose
     private Double longitude;
 
     /**

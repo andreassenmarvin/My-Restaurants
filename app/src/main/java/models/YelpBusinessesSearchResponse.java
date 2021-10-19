@@ -11,8 +11,14 @@ import org.parceler.Parcel;
 @Parcel
 public class YelpBusinessesSearchResponse {
 
+    @SerializedName("total")
+    @Expose
     private Integer total;
+    @SerializedName("businesses")
+    @Expose
     private List<Business> businesses = null;
+    @SerializedName("region")
+    @Expose
     private Region region;
 
     /**
