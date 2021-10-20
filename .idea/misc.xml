@@ -5,11 +5,12 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/myrestaurant.xml" value="0.15104166666666666" />
         <entry key="app/src/main/res/layout/acivity_main.xml" value="0.26197916666666665" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/layout/activity_restaurant_detail.xml" value="0.1578125" />
         <entry key="app/src/main/res/layout/activity_restaurants.xml" value="0.3337628865979381" />
         <entry key="app/src/main/res/layout/fragment_restaurant_detail.xml" value="0.1578125" />
         <entry key="app/src/main/res/layout/restaurant_list_item.xml" value="0.11927083333333334" />
+        <entry key="app/src/main/res/menu/menu_search.xml" value="0.1453125" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.17395833333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.17395833333333333" />
       </map>

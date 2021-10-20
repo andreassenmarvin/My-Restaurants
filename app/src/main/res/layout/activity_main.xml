@@ -21,6 +21,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/appDescriptionTextView"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/appNameTextView"
@@ -33,24 +34,14 @@
         android:layout_marginTop="100dp"
         android:elevation="10dp"/>
 
-    <EditText
-        android:id="@+id/locationEditText"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:background="@color/design_default_color_background"
-        android:hint="Enter location..."
-        android:padding="10dp" />
-
     <Button
         android:id="@+id/findRestaurantsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/locationEditText"
+        android:layout_below="@+id/appDescriptionTextView"
         android:layout_centerHorizontal="true"
         android:background="@color/black"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:padding="15dp"
         android:text="Find Restaurants"
         android:textColor="@color/white" />
