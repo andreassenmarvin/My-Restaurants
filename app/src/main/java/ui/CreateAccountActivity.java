@@ -10,11 +10,15 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myrestaurants.LoginActivity;
 import com.example.myrestaurants.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -30,9 +34,22 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     @BindView(R.id.confirmPasswordEditText) EditText mConfirmPasswordEditText;
     @BindView(R.id.createUserButton) Button mCreateUserButton;
     @BindView(R.id.loginTextView) TextView mLoginTextView;
+    @BindView(R.id.firebaseProgressBar) ProgressBar mSignUpProgressBar;
+    @BindView(R.id.loadingTextView) TextView mLoadingSignUp;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+
+    private void showProgressBar() {
+        mSignUpProgressBar.setVisibility(View.VISIBLE);
+        mLoadingSignUp.setVisibility(View.VISIBLE);
+        mLoadingSignUp.setText("Signing up");
+    }
+
+    private void hideProgressBar() {
+        mSignUpProgressBar.setVisibility(View.GONE);
+        mLoadingSignUp.setVisibility(View.GONE);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,15 +90,25 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         boolean validPassword = isValidPassword(password, confirmPassword);
         if (!validEmail || !validName || !validPassword) return;
 
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                   if (task.isSuccessful()) {
-                       Log.d(TAG, "Authentication successful");
-                   }
-                   else {
-                       Toast.makeText(CreateAccountActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                   }
-                });
+        showProgressBar();
+
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                hideProgressBar();
+
+                if (task.isSuccessful()) {
+                    Log.d(TAG, "Authentication successful");
+                } else {
+                    Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+        });
     }
 
     private void createAuthStateListener() {
