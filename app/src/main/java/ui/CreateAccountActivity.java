@@ -21,6 +21,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,6 +42,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private String mName;
 
     private void showProgressBar() {
         mSignUpProgressBar.setVisibility(View.VISIBLE);
@@ -84,9 +88,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         final String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
         String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
+        mName = mNameEditText.getText().toString().trim();
 
         boolean validEmail = isValidEmail(email);
         boolean validName = isValidName(name);
+        boolean validmName = isValidName(mName);
         boolean validPassword = isValidPassword(password, confirmPassword);
         if (!validEmail || !validName || !validPassword) return;
 
@@ -101,6 +107,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
                 if (task.isSuccessful()) {
                     Log.d(TAG, "Authentication successful");
+                    createFirebaseUserProfile(Objects.requireNonNull(task.getResult().getUser()));
                 } else {
                     Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
                             Toast.LENGTH_SHORT).show();
@@ -141,12 +148,12 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
     private boolean isValidEmail(String email) {
         boolean isGoodEmail =
-                (email !=null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches());
+                (email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches());
      if (!isGoodEmail) {
          mEmailEditText.setError("Please enter a valid email address");
          return false;
      }
-     return isGoodEmail;
+     return true;
     }
 
     private boolean isValidName(String name) {
@@ -158,15 +165,33 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     }
 
     private boolean isValidPassword(String password, String confirmPassword) {
-        if (password.length() < 6) {
-            mPasswordEditText.setError("Your password should contain at least 6 characters");
+        boolean isGoodPassword = (password != null && password.length() >= 6);
+        if (!isGoodPassword) {
+            mPasswordEditText.setError("Please enter a valid password with 6 or more characters");
             return false;
         }
         else if (!password.equals(mConfirmPasswordEditText)) {
             mPasswordEditText.setError("Passwords do not match");
-            mConfirmPasswordEditText.setError("Passwords do not match");
             return false;
         }
         return true;
+    }
+
+    private void createFirebaseUserProfile(final FirebaseUser user) {
+
+        UserProfileChangeRequest addProfileName = new UserProfileChangeRequest.Builder()
+                .setDisplayName(mName)
+                .build();
+
+        user.updateProfile(addProfileName)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, Objects.requireNonNull(user.getDisplayName()));
+                            Toast.makeText(CreateAccountActivity.this, "Your display name has been set", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 }
