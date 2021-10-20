@@ -151,6 +151,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                 (email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches());
      if (!isGoodEmail) {
          mEmailEditText.setError("Please enter a valid email address");
+         mEmailEditText.requestFocus();
          return false;
      }
      return true;
@@ -159,6 +160,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     private boolean isValidName(String name) {
         if (name.equals("")) {
             mNameEditText.setError("Please enter your name");
+            mNameEditText.requestFocus();
             return false;
         }
         return true;
@@ -168,10 +170,12 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         boolean isGoodPassword = (password != null && password.length() >= 6);
         if (!isGoodPassword) {
             mPasswordEditText.setError("Please enter a valid password with 6 or more characters");
+            mPasswordEditText.requestFocus();
             return false;
         }
         else if (confirmPassword.equals("")){
             mConfirmPasswordEditText.setError("Please confirm your password");
+            mConfirmPasswordEditText.requestFocus();
         }
         else if (!password.equals(mConfirmPasswordEditText)) {
             mPasswordEditText.setError("Passwords do not match");

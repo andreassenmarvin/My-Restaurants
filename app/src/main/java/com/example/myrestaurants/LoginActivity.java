@@ -99,10 +99,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String password = mPasswordEditText.getText().toString().trim();
         if (email.equals("")) {
             mEmailEditText.setError("Please enter your email");
+            mEmailEditText.requestFocus();
             return;
         }
         if (password.equals("")) {
             mPasswordEditText.setError("Password cannot be blank");
+            mPasswordEditText.requestFocus();
             return;
         }
         mAuth.signInWithEmailAndPassword(email, password)
