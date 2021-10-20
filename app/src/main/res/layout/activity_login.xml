@@ -89,6 +89,7 @@
         android:layout_below="@+id/firebaseProgressBar"
         android:textColor="@color/white"
         android:layout_margin="20dp"
+        android:padding="10dp"
         android:visibility="gone" />
 
 </RelativeLayout>

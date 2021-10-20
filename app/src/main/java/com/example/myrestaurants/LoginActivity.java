@@ -71,15 +71,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         if(view == mPasswordLoginButton) {
+            String email = mEmailEditText.getText().toString().trim();
+            String password = mPasswordEditText.getText().toString().trim();
+
             loginWithPassword();
             showProgressBar();
+
+            if (email.equals("") || (password.equals(""))) {
+                hideProgressBar();
+            }
         }
     }
 
     private void showProgressBar() {
         mSignInProgressBar.setVisibility(View.VISIBLE);
         mLoadingSignUp.setVisibility(View.VISIBLE);
-        mLoadingSignUp.setText("Log in you in");
+        mLoadingSignUp.setText("Logging you in");
     }
 
     private void hideProgressBar() {
@@ -98,14 +105,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             mPasswordEditText.setError("Password cannot be blank");
             return;
         }
-
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         hideProgressBar();
                         Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
                         if (!task.isSuccessful()) {
+                            hideProgressBar();
                             Log.w(TAG, "signInWithEmail", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
