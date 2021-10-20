@@ -170,6 +170,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             mPasswordEditText.setError("Please enter a valid password with 6 or more characters");
             return false;
         }
+        else if (confirmPassword.equals("")){
+            mConfirmPasswordEditText.setError("Please confirm your password");
+        }
         else if (!password.equals(mConfirmPasswordEditText)) {
             mPasswordEditText.setError("Passwords do not match");
             return false;
